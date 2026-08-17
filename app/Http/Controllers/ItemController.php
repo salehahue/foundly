@@ -11,10 +11,43 @@ use Illuminate\Support\Facades\Storage;
 class ItemController extends Controller
 {
     // Display all items
-    public function index()
+    /*    public function index()
     {
         $items = Item::with('category')->latest()->get();
         return view('items', compact('items'));
+    }*/
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $type = $request->input('type');
+
+        $items = Item::with('category')
+
+            // SEARCH
+            ->when($search, function ($query, $search) {
+
+                $query->where(function ($query) use ($search) {
+
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%")
+                        ->orWhere('location', 'like', "%{$search}%")
+                        ->orWhereHas('category', function ($query) use ($search) {
+                            $query->where('name', 'like', "%{$search}%");
+                        });
+                });
+            })
+
+            // LOST / FOUND FILTER
+            ->when($type, function ($query, $type) {
+                $query->where('type', $type);
+            })
+
+            ->latest()
+            //->get();
+            ->paginate(6)
+            ->withQueryString();
+
+        return view('items', compact('items', 'search', 'type'));
     }
     // Show create form
     public function create()

@@ -85,5 +85,6 @@ class DatabaseSeeder extends Seeder
             'location' => 'Sports Ground',
             'category_id' => $other->id,
         ]);
+        
     }
 }

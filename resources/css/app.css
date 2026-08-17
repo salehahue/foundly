@@ -1239,3 +1239,145 @@ textarea.form-control-foundly {
 .item-card-content {
     padding: 22px;
 }
+/* =========================================================
+   ITEM SEARCH & FILTER
+   ========================================================= */
+
+.items-filter {
+    display: grid;
+    grid-template-columns: 1fr 180px auto auto;
+    gap: 10px;
+
+    margin-bottom: 35px;
+    padding: 18px;
+
+    background: var(--paper);
+
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.items-filter .form-control-foundly,
+.items-filter .form-select-foundly {
+    min-height: 44px;
+}
+@media (max-width: 650px) {
+
+    .items-filter {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   FOUNDLY PAGINATION
+   ========================================================= */
+
+.foundly-pagination {
+    margin-top: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.foundly-page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.foundly-pagination .foundly-page {
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px !important;
+    min-height: 42px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid var(--line) !important;
+    border-radius: 50% !important;
+
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+
+    line-height: 1 !important;
+    text-decoration: none !important;
+
+    box-sizing: border-box !important;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.foundly-pagination .foundly-page:hover {
+    background: var(--ink) !important;
+    border-color: var(--ink) !important;
+    color: white !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* Active page */
+
+.foundly-pagination .foundly-page.active {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: white !important;
+
+    font-weight: 600 !important;
+}
+
+
+/* Disabled */
+
+.foundly-pagination .foundly-page.disabled {
+    background: #f3f0eb !important;
+    border-color: var(--line) !important;
+    color: #b5b0a8 !important;
+
+    cursor: default;
+}
+
+
+@media (max-width: 650px) {
+
+    .foundly-pagination {
+        margin-top: 35px;
+        gap: 6px;
+    }
+
+    .foundly-page-numbers {
+        gap: 6px;
+    }
+
+    .foundly-pagination .foundly-page {
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px !important;
+        min-height: 38px !important;
+
+        font-size: 13px !important;
+    }
+
+}
