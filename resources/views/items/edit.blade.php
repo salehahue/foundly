@@ -44,8 +44,8 @@
 
             <div class="form-shell">
 
-                <form action="{{ route('items.update', $item->id) }}" method="POST" class="foundly-form">
-
+                <form action="{{ route('items.update', $item->id) }}" method="POST" enctype="multipart/form-data"
+                    class="foundly-form">
                     @csrf
                     @method('PUT')
 
@@ -133,6 +133,25 @@
                         </label>
 
                         <textarea name="description" id="description" class="form-control-foundly">{{ old('description', $item->description) }}</textarea>
+
+                    </div>
+                    <div class="form-field">
+
+                        <label for="image" class="form-label">
+                            Item image
+                        </label>
+
+                        @if ($item->image)
+                            <div class="current-image">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                            </div>
+                        @endif
+
+                        <input type="file" name="image" id="image" class="form-control-foundly" accept="image/*">
+
+                        <small>
+                            Leave empty to keep the current image.
+                        </small>
 
                     </div>
 

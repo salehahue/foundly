@@ -12,45 +12,64 @@
                 ← Back to Lost & Found
             </a>
 
-
             <div class="detail-card">
 
-                <div class="detail-meta">
+                {{-- LEFT: IMAGE --}}
+                <div class="detail-image">
 
-                    <x-status-tag :type="$item->type" />
-
-                    <span class="item-category">
-                        {{ $item->category->name }}
-                    </span>
+                    @if ($item->image)
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                    @else
+                        <div class="detail-image-placeholder">
+                            <span>▱</span>
+                        </div>
+                    @endif
 
                 </div>
 
 
-                <h1>
-                    {{ $item->name }}
-                </h1>
+                {{-- RIGHT: DETAILS --}}
+                <div class="detail-content">
+
+                    <div class="detail-meta">
+
+                        <x-status-tag :type="$item->type" />
+
+                        <span class="item-category">
+                            {{ $item->category->name }}
+                        </span>
+
+                    </div>
 
 
-                <p class="detail-location">
-                    {{ $item->type }} at {{ $item->location }}
-                </p>
-
-                <p class="detail-date">
-                    {{ $item->date->format('d M Y, h:i A') }}
-                </p>
+                    <h1>
+                        {{ $item->name }}
+                    </h1>
 
 
-                <hr class="detail-divider">
+                    <p class="detail-location">
+                        {{ $item->type }} at {{ $item->location }}
+                    </p>
 
 
-                <p class="detail-description">
-                    {{ $item->description }}
-                </p>
+                    <p class="detail-date">
+                        {{ $item->date->format('d M Y, h:i A') }}
+                    </p>
 
 
-                <button class="foundly-btn">
-                    I think this is mine
-                </button>
+                    <hr class="detail-divider">
+
+
+                    <p class="detail-description">
+                        {{ $item->description }}
+                    </p>
+
+
+                    <button class="foundly-btn">
+                        I think this is mine
+                    </button>
+
+                </div>
 
             </div>
 

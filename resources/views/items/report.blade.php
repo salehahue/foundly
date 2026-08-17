@@ -5,9 +5,7 @@
 @section('content')
 
     <div class="form-page">
-
         <div class="container">
-
             <div class="form-heading">
 
                 <span class="badge-foundly">
@@ -24,7 +22,6 @@
 
             </div>
 
-
             @if ($errors->any())
 
                 <div class="validation-box">
@@ -40,15 +37,9 @@
                 </div>
 
             @endif
-
-
             <div class="form-shell">
-
-                <form action="{{ route('items.store') }}" method="POST" class="foundly-form">
-
+                <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data" class="foundly-form">
                     @csrf
-
-
                     {{-- NAME --}}
                     <div class="form-field">
 
@@ -60,8 +51,6 @@
                             value="{{ old('name') }}" placeholder="e.g. Black Wallet">
 
                     </div>
-
-
                     {{-- TYPE --}}
                     <div class="form-field">
 
@@ -86,8 +75,6 @@
                         </select>
 
                     </div>
-
-
                     {{-- CATEGORY --}}
                     <div class="form-field">
 
@@ -111,8 +98,6 @@
                         </select>
 
                     </div>
-
-
                     {{-- LOCATION --}}
                     <div class="form-field">
 
@@ -135,8 +120,6 @@
                             value="{{ old('date') }}">
 
                     </div>
-
-
                     {{-- DESCRIPTION --}}
                     <div class="form-field">
 
@@ -147,8 +130,16 @@
                         <textarea name="description" id="description" class="form-control-foundly" placeholder="Describe the item...">{{ old('description') }}</textarea>
 
                     </div>
-
-
+                    {{-- IMAGE --}}
+                    <div class="form-field">
+                        <label for="image" class="form-label">
+                            Item image
+                        </label>
+                        <input type="file" name="image" id="image" class="form-control-foundly" accept="image/*">
+                        <small>
+                            JPG, JPEG, PNG, WEBP — maximum 2 MB.
+                        </small>
+                    </div>
                     <div class="form-actions">
 
                         <button type="submit" class="foundly-btn">
@@ -160,7 +151,6 @@
                         </a>
 
                     </div>
-
                 </form>
 
             </div>
