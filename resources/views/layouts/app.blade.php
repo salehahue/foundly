@@ -24,7 +24,7 @@
                     Lost & Found
                 </a>
 
-                <a href="{{ route('items.create') }}" class="nav-report">
+                <a href="{{ route('items.report') }}" class="nav-report">
                     Report an item
                 </a>
 

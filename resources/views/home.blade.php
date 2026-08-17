@@ -34,7 +34,7 @@
                             Browse Lost & Found
                         </a>
 
-                        <a href="{{ route('items.create') }}" class="foundly-btn-outline">
+                        <a href="{{ route('items.report') }}" class="foundly-btn-outline">
                             Report an item
                         </a>
 

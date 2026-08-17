@@ -40,7 +40,7 @@
                     <!-- Report Item - Only for logged in users -->
                     @auth
 
-                        <x-nav-link :href="route('items.create')" :active="request()->routeIs('items.create')">
+                        <x-nav-link :href="route('items.report')" :active="request()->routeIs('items.report')">
 
                             {{ __('Report Item') }}
 
@@ -198,7 +198,7 @@
 
                 <!-- Report -->
 
-                <x-responsive-nav-link :href="route('items.create')" :active="request()->routeIs('items.create')">
+                <x-responsive-nav-link :href="route('items.report')" :active="request()->routeIs('items.report')">
 
                     {{ __('Report Item') }}
 

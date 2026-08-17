@@ -18,7 +18,7 @@
                         Maybe what you're looking for is here.
                     </p>
                 </div>
-                <a href="{{ route('items.create') }}" class="foundly-btn">
+                <a href="{{ route('items.report') }}" class="foundly-btn">
                     Report an item
                 </a>
             </div>

@@ -12,30 +12,23 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::with('category')->latest()->get();
-
         return view('items', compact('items'));
     }
-
     // Show create form
     public function create()
     {
         $categories = Category::all();
-
-        return view('items.create', compact('categories'));
+        return view('items.report', compact('categories'));
     }
-
     public function edit($id)
     {
         $item = Item::findOrFail($id);
-
         $categories = Category::all();
-
         return view('items.edit', compact('item', 'categories'));
     }
     public function update(Request $request, $id)
     {
         $item = Item::findOrFail($id);
-
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|in:Lost,Found',
@@ -44,9 +37,7 @@ class ItemController extends Controller
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
         ]);
-
         $item->update($validated);
-
         return redirect()
             ->route('items.index')
             ->with('success', 'Item updated successfully.');
@@ -54,14 +45,11 @@ class ItemController extends Controller
     public function destroy($id)
     {
         $item = Item::findOrFail($id);
-
         $item->delete();
-
         return redirect()
             ->route('items.index')
             ->with('success', 'Item deleted successfully.');
     }
-
     // Store new item
     public function store(Request $request)
     {
@@ -73,19 +61,15 @@ class ItemController extends Controller
             'date' => 'required|date',
             'description' => 'required|string',
         ]);
-
         Item::create($validated);
-
         return redirect()
             ->route('items.index')
             ->with('success', 'Item added successfully.');
     }
-
     // Display one item
     public function show($id)
     {
         $item = Item::with('category')->findOrFail($id);
-
         return view('item-details', compact('item'));
     }
 }
